@@ -76,11 +76,8 @@ function flush() {
       // выкючаем трек с номером i
       host.getMidiOutPort(0).sendMidi(136, btns[i], 0);
 
-      cursorIndex
       // включаем трек с номером i если он выбран в программе(cursorIndex)
-      if (i === cursorIndex) {
-         host.getMidiOutPort(0).sendMidi(152, btns[i], 16);
-      }
+       host.getMidiOutPort(0).sendMidi(152, btns[i], i === cursorIndex ? 16 : 15);
 
    }
 
