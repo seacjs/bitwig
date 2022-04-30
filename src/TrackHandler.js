@@ -17,8 +17,8 @@ function TrackHandler (trackbank, cursorTrack)
         p.markInterested ();
         p.setIndication (true);    
 
-        p = track.select;
-        p.markInterested ();
+        // p = track.select;
+        // p.markInterested ();
 
     }
 

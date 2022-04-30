@@ -3,7 +3,7 @@ load ("Hardware.js");
 load ("TrackHandler.js");
 
 host.setShouldFailOnDeprecatedUse(true);
-host.defineController("Solncev", "Launchcontrol VI", "0.1", "5c5f23bb-cc7a-4986-af45-3ed550a5b3c4", "Vi");
+host.defineController("Solncev", "Launchcontrol Sea", "0.1", "5c5f23bb-cc7a-4986-af45-3ed550a5b3c4", "Vi");
 host.defineMidiPorts(1, 1);
 host.addDeviceNameBasedDiscoveryPair(["4- Launch Control XL"], ["4- Launch Control XL"]);
 
