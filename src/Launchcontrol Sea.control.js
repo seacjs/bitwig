@@ -46,6 +46,9 @@ function handleMidi (status, data1, data2)
 }
 function flush() {
 
+   var cursorIndex = trackHandler.trackbank.cursorIndex();
+   println('cursorIndex: ' + cursorIndex);
+
    var btns = [
       LCXL_BUTTON_1_1,
       LCXL_BUTTON_1_2,
@@ -65,7 +68,7 @@ function flush() {
    {
       var track = trackHandler.trackbank.getItemAt (i);
       var volume = track.volume().get();
-      println('volume: ' + volume);
+      // println('volume: ' + volume);
 
       host.getMidiOutPort(0).sendMidi(volume > 0 ? 152 : 136, btns[i], 16);
 
