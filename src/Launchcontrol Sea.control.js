@@ -49,7 +49,7 @@ function flush() {
 
     // Ставим наблюдатель на номер выбранного трека
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
-   println('We choise cursor index: ' + cursorIndex);
+   println('We choise cursor index: ' + cursorIndex + ' of: ' + trackHandler.trackbank.itemCount());
 
    var btns = [
       LCXL_BUTTON_1_1,
