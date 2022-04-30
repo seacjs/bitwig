@@ -67,7 +67,7 @@ function flush() {
    })
 
    // перебор треков из трек банка
-   for (i = 0; i < trackHandler.trackbank.itemCount().get(); i++)
+   for (i = 0; i < trackHandler.trackbank.getSizeOfBank(); i++)
    {
       var track = trackHandler.trackbank.getItemAt (i);
       // громкость трека
@@ -77,7 +77,9 @@ function flush() {
       host.getMidiOutPort(0).sendMidi(136, btns[i], 0);
 
       // включаем трек с номером i если он выбран в программе(cursorIndex)
-       host.getMidiOutPort(0).sendMidi(152, btns[i], i === cursorIndex ? 16 : 15);
+      if (i < trackHandler.trackbank.itemCount().get()) {
+         host.getMidiOutPort(0).sendMidi(152, btns[i], i === cursorIndex ? 16 : 15);
+      }
 
    }
 
