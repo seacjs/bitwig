@@ -20,16 +20,14 @@ function init()
 //  itemCount()
 // cursorIndex()
 // getSizeOfBank()
-   trackHandler.trackbank.cursorIndex();
-   trackHandler.trackbank.getItemAt();
+   // trackHandler.trackbank.cursorIndex();
+   // trackHandler.trackbank.getItemAt();
 
    // !!!  start here 
-
    // const testPos = trackHandler.cursorTrack.position();
-     const testPos = trackHandler.cursorTrack.selectFirstChild();
-
+   //   const testPos = trackHandler.cursorTrack.selectFirstChild();
    //   trackHandler.trackbank.getItemAt(2).select();
-      println('testPos: ' + testPos);
+      // println('testPos: ' + testPos);
 
    // RootControlSurfaceObject/CursorTrackProxy/TrackProxy(MOXF_CURSOR_TRACK)/ComputedIntegerValue/
 
@@ -70,6 +68,9 @@ function handleMidi (status, data1, data2)
 
 function flush() {
 
+   var cursorIndex = trackHandler.trackbank.cursorIndex();
+   println('cursorIndex: ' + cursorIndex);
+
    var btns = [
       LCXL_BUTTON_1_1,
       LCXL_BUTTON_1_2,
@@ -89,7 +90,7 @@ function flush() {
    {
       var track = trackHandler.trackbank.getItemAt (i);
       var volume = track.volume().get();
-      println('volume: ' + volume);
+     //  println('volume: ' + volume);
 
       if (volume > 0) {
          var  p = track.position ();
