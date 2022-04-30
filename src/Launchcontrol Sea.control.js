@@ -67,7 +67,7 @@ function flush() {
    })
 
    // перебор треков из трек банка
-   for (i = 0; i < trackHandler.trackbank.getSizeOfBank (); i++)
+   for (i = 0; i < trackHandler.trackbank.itemCount().get(); i++)
    {
       var track = trackHandler.trackbank.getItemAt (i);
       // громкость трека
