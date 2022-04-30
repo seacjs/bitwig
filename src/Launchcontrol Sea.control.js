@@ -68,8 +68,8 @@ function handleMidi (status, data1, data2)
 
 function flush() {
 
-   var cursorIndex = trackHandler.trackbank.cursorIndex();
-   println('cursorIndex: ' + cursorIndex);
+   // var cursorIndex = trackHandler.trackbank.cursorIndex();
+   // println('cursorIndex: ' + cursorIndex);
 
    var btns = [
       LCXL_BUTTON_1_1,
