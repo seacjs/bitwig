@@ -7,6 +7,8 @@ function TrackHandler (trackbank, cursorTrack)
     // Ставить обсервер на номер выбранного трека
     this.trackbank.cursorIndex().markInterested();
 
+    this.trackbank.itemCount().markInterested()
+
     for (i = 0; i < this.trackbank.getSizeOfBank (); i++)
     {
         var track = this.trackbank.getItemAt (i);

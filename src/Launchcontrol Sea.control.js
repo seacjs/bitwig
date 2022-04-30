@@ -46,10 +46,10 @@ function handleMidi (status, data1, data2)
 }
 function flush() {
    println('flush hello' );
-
+   
     // Ставим наблюдатель на номер выбранного трека
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
-   println('We choise cursor index: ' + cursorIndex + ' of: ' + trackHandler.trackbank.itemCount());
+   println('We choise cursor index: ' + cursorIndex + ' of: ' + trackHandler.trackbank.itemCount().get());
 
    var btns = [
       LCXL_BUTTON_1_1,
