@@ -4,6 +4,8 @@ function TrackHandler (trackbank, cursorTrack)
     this.cursorTrack = cursorTrack;
     this.selectedTrackIndex = 0;
 
+    this.trackbank.cursorIndex().markInterested();
+
     for (i = 0; i < this.trackbank.getSizeOfBank (); i++)
     {
         var track = this.trackbank.getItemAt (i);

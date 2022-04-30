@@ -47,7 +47,7 @@ function handleMidi (status, data1, data2)
 function flush() {
    println('flush hello' );
 
-   var cursorIndex = trackHandler.trackbank.cursorIndex();
+   var cursorIndex = trackHandler.trackbank.cursorIndex().get();
    println('cursorIndex: ' + cursorIndex);
 
    var btns = [
