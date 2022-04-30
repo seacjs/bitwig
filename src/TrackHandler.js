@@ -4,6 +4,7 @@ function TrackHandler (trackbank, cursorTrack)
     this.cursorTrack = cursorTrack;
     this.selectedTrackIndex = 0;
 
+    // Ставить обсервер на номер выбранного трека
     this.trackbank.cursorIndex().markInterested();
 
     for (i = 0; i < this.trackbank.getSizeOfBank (); i++)

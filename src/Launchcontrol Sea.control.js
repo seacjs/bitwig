@@ -47,8 +47,9 @@ function handleMidi (status, data1, data2)
 function flush() {
    println('flush hello' );
 
+    // Ставим наблюдатель на номер выбранного трека
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
-   println('cursorIndex: ' + cursorIndex);
+   println('We choise cursor index: ' + cursorIndex);
 
    var btns = [
       LCXL_BUTTON_1_1,
@@ -65,18 +66,21 @@ function flush() {
       host.getMidiOutPort(0).sendMidi(136, btn, 16);
    })
 
+   // перебор треков из трек банка
    for (i = 0; i < trackHandler.trackbank.getSizeOfBank (); i++)
    {
       var track = trackHandler.trackbank.getItemAt (i);
+      // громкость трека
       var volume = track.volume().get();
-      // println('volume: ' + volume);
 
-      host.getMidiOutPort(0).sendMidi(volume > 0 ? 152 : 136, btns[i], 16);
+      // выкючаем трек с номером i
+      host.getMidiOutPort(0).sendMidi(136, btns[i], 0);
 
-      // check start
-
-      // println('select: '+ select);
-      // check end
+      cursorIndex
+      // включаем трек с номером i если он выбран в программе(cursorIndex)
+      if (i === cursorIndex) {
+         host.getMidiOutPort(0).sendMidi(152, btns[i], 16);
+      }
 
    }
 
