@@ -51,7 +51,9 @@ function flush() {
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
    cursorIndex = cursorIndex === -1 ? 0 : cursorIndex;
 
-   println('We choise cursor index: ' + cursorIndex + ' of: ' + trackHandler.trackbank.itemCount().get());
+   var itemCounts = trackHandler.trackbank.itemCount().get();
+
+   println('We choise cursor index: ' + cursorIndex + ' of: ' + itemCounts);
 
    var btns = [
       LCXL_BUTTON_1_1,
@@ -69,7 +71,7 @@ function flush() {
    })
 
    // перебор треков из трек банка
-   for (i = 0; i < trackHandler.trackbank.getSizeOfBank(); i++)
+   for (i = 0; i < itemCounts; i++)
    {
       var track = trackHandler.trackbank.getItemAt (i);
       // громкость трека
@@ -79,9 +81,10 @@ function flush() {
       host.getMidiOutPort(0).sendMidi(136, btns[i], 0);
 
       // включаем трек с номером i если он выбран в программе(cursorIndex)
-      if (i < trackHandler.trackbank.itemCount().get()) {
-         host.getMidiOutPort(0).sendMidi(152, btns[i], i === cursorIndex ? 16 : 15);
-      }
+      // if (i < trackHandler.trackbank.itemCount().get()) {
+      host.getMidiOutPort(0).sendMidi(152, btns[i],  i%8 == cursorIndex ? 16 : 15);
+      // }
+      
 
    
 
