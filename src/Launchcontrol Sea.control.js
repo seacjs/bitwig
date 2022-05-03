@@ -85,7 +85,7 @@ function flush() {
       // включаем трек с номером i если он выбран в программе(cursorIndex)
       if (i < trackHandler.trackbank.itemCount().get()) {
          var del = 0;
-         if (i > 7) {
+         if (trackHandler.trackbank.itemCount().get() > 7) {
             del = i % 8;
             color = del === cursorIndex ? 16 : (del < cursorIndex ? 15: 0);
          } else {
