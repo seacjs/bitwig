@@ -51,7 +51,7 @@ function flush() {
     // Ставим наблюдатель на номер выбранного трека
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
    if (cursorIndex === -1 ) {
-      trackHandler.trackbank.scrollChannelsPageDown();
+      trackHandler.trackbank.scrollPageForwards();
    }
 
    cursorIndex = cursorIndex === -1 ? 0 : cursorIndex;
