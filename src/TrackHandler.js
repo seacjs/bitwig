@@ -100,9 +100,9 @@ TrackHandler.prototype.handleMidi = function (status, data1, data2)
     {
         switch (data1)
         {
-            // case LCXL_BUTTON_1_1:
-            //     this.trackbank.getItemAt (0).select ();
-            //     return true;
+            case LCXL_BUTTON_1_1:
+                this.trackbank.getItemAt (0).select ();
+                return true;
 
             case LCXL_BUTTON_1_2:
                 this.trackbank.getItemAt (1).select ();
