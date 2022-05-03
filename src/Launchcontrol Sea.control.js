@@ -87,12 +87,13 @@ function flush() {
          var del = 0;
          if (trackHandler.trackbank.itemCount().get() > 7) {
             del = (trackHandler.trackbank.itemCount().get() % 8) - 1;
-            color = del === cursorIndex ? 16 : (del < cursorIndex ? 15: 0);
+            color = del === cursorIndex ? 16 : 15;
          } else {
             color = i === cursorIndex ? 16 : 15;
          }
+         
 
-         host.getMidiOutPort(0).sendMidi(152, btns[i], color);
+         host.getMidiOutPort(0).sendMidi(del > cursorIndex ? 136 : 152, btns[i], del > cursorIndex ? 0 : color);
       }
       
    }
