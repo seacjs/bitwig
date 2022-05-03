@@ -50,6 +50,10 @@ function flush() {
    
     // Ставим наблюдатель на номер выбранного трека
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
+   if (cursorIndex === -1 ) {
+      trackHandler.trackbank.followCursorTrack (this.cursorTrack);
+   }
+
    cursorIndex = cursorIndex === -1 ? 0 : cursorIndex;
 
    println('We choise cursor index: ' + cursorIndex + ' of: ' + trackHandler.trackbank.itemCount().get());
