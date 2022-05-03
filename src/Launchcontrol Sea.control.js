@@ -86,7 +86,7 @@ function flush() {
       if (i < trackHandler.trackbank.itemCount().get()) {
          var del = 0;
          if (trackHandler.trackbank.itemCount().get() > 7) {
-            del = i % 8;
+            del = (trackHandler.trackbank.itemCount().get() % 8) - 1;
             color = del === cursorIndex ? 16 : (del < cursorIndex ? 15: 0);
          } else {
             color = i === cursorIndex ? 16 : 15;
