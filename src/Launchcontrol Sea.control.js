@@ -49,6 +49,8 @@ function flush() {
    
     // Ставим наблюдатель на номер выбранного трека
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
+   cursorIndex = cursorIndex === -1 ? 0 : cursorIndex;
+
    println('We choise cursor index: ' + cursorIndex + ' of: ' + trackHandler.trackbank.itemCount().get());
 
    var btns = [
@@ -80,6 +82,9 @@ function flush() {
       if (i < trackHandler.trackbank.itemCount().get()) {
          host.getMidiOutPort(0).sendMidi(152, btns[i], i === cursorIndex ? 16 : 15);
       }
+
+   
+
 
    }
 
