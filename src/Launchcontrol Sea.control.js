@@ -46,6 +46,7 @@ function handleMidi (status, data1, data2)
 }
 function flush() {
    println('flush hello' );
+   var color = 15;
    
     // Ставим наблюдатель на номер выбранного трека
    var cursorIndex = trackHandler.trackbank.cursorIndex().get();
@@ -80,13 +81,18 @@ function flush() {
 
       // включаем трек с номером i если он выбран в программе(cursorIndex)
       if (i < trackHandler.trackbank.itemCount().get()) {
-         host.getMidiOutPort(0).sendMidi(152, btns[i], i === cursorIndex ? 16 : 15);
+         var del = 0;
+         if (i > 7) {
+            del = i % 8;
+            color = del === cursorIndex ? 16 : 15;
+         } else {
+            color = i === cursorIndex ? 16 : 15;
+         }
+
+
+         host.getMidiOutPort(0).sendMidi(152, btns[i], color);
       }
       
-
-   
-
-
    }
 
    if (trackHandler?.cursorTrack?.track) {
