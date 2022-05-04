@@ -89,8 +89,8 @@ function flush() {
       // new ver start
       var itemsInBank = trackHandler.trackbank.getSizeOfBank();
       var maxInCurrentBank = 0;
-      if (itemsInBank >= itemsCount && itemsInBank >= cursorIndex) {
-         maxInCurrentBank = itemsCount;
+      if (itemsInBank >= itemsCount) {
+         maxInCurrentBank = itemsInBank;
       } else {
          // Если не сработает то отнять единицуmaxInCurrentBank = itemsCount % itemsInBank - 1;
          maxInCurrentBank = itemsCount % itemsInBank;
