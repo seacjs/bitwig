@@ -72,6 +72,8 @@ function flush() {
       host.getMidiOutPort(0).sendMidi(136, btn, 16);
    })
 
+   var itemsCount = trackHandler.trackbank.itemCount().get();
+
    // перебор треков из трек банка
    for (i = 0; i < trackHandler.trackbank.getSizeOfBank(); i++)
    {
@@ -83,17 +85,37 @@ function flush() {
       host.getMidiOutPort(0).sendMidi(136, btns[i], 0);
 
       // включаем трек с номером i если он выбран в программе(cursorIndex)
-      if (i < trackHandler.trackbank.itemCount().get()) {
-         var del = 0;
-         if (trackHandler.trackbank.itemCount().get() > 7) {
-            del = (trackHandler.trackbank.itemCount().get() % 8) - 1;
-            color = del === cursorIndex ? 16 : 15;
-         } else {
-            color = i === cursorIndex ? 16 : 15;
-         }
 
-         host.getMidiOutPort(0).sendMidi(152, btns[i], color);
+      // new ver start
+      var itemsInBank = trackHandler.trackbank.getSizeOfBank();
+      var maxInCurrentBank = 0;
+      if (itemsInBank <= itemsCount) {
+         maxInCurrentBank = itemsCount;
+      } else {
+         // Если не сработает то отнять единицуmaxInCurrentBank = itemsCount % itemsInBank - 1;
+         maxInCurrentBank = itemsCount % itemsInBank;
       }
+
+      if (i < maxInCurrentBank) {
+         color = i === cursorIndex ? 16 : 15;
+      } else {
+         color = 0
+      }
+      host.getMidiOutPort(0).sendMidi(152, btns[i], color);
+      // new ver and
+
+      // last ver start
+      // if (i < trackHandler.trackbank.itemCount().get()) {
+      //    var del = 0;
+      //    if (trackHandler.trackbank.itemCount().get() > 7) {
+      //       del = (trackHandler.trackbank.itemCount().get() % 8) - 1;
+      //       color = del === cursorIndex ? 16 : 15;
+      //    } else {
+      //       color = i === cursorIndex ? 16 : 15;
+      //    }
+      //    host.getMidiOutPort(0).sendMidi(152, btns[i], color);
+      // }
+      // last ver end
       
    }
 
