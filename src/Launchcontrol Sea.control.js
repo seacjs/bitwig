@@ -89,7 +89,7 @@ function flush() {
       // new ver start
       var itemsInBank = trackHandler.trackbank.getSizeOfBank();
       var maxInCurrentBank = 0;
-      if (itemsInBank <= itemsCount) {
+      if (itemsInBank >= itemsCount) {
          maxInCurrentBank = itemsCount;
       } else {
          // Если не сработает то отнять единицуmaxInCurrentBank = itemsCount % itemsInBank - 1;
@@ -99,7 +99,7 @@ function flush() {
       if (i < maxInCurrentBank) {
          color = i === cursorIndex ? 16 : 15;
       } else {
-         color = 0
+         color = 0;
       }
       host.getMidiOutPort(0).sendMidi(color === 0 ? 136 : 152, btns[i], color);
       // new ver and
