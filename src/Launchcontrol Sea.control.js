@@ -101,7 +101,7 @@ function flush() {
       } else {
          color = 0
       }
-      host.getMidiOutPort(0).sendMidi(152, btns[i], color);
+      host.getMidiOutPort(0).sendMidi(color === 0 ? 136 : 152, btns[i], color);
       // new ver and
 
       // last ver start
