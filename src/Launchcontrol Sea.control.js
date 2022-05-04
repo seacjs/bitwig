@@ -74,6 +74,18 @@ function flush() {
 
    var itemsCount = trackHandler.trackbank.itemCount().get();
 
+
+   // new ver start
+   var itemsInBank = trackHandler.trackbank.getSizeOfBank();
+   var maxInCurrentBank = 0;
+   if (itemsInBank >= itemsCount) {
+      maxInCurrentBank = itemsCount;
+   } else {
+      // Если не сработает то отнять единицуmaxInCurrentBank = itemsCount % itemsInBank - 1;
+      maxInCurrentBank = itemsCount % itemsInBank;
+   }
+   // new ver end
+
    // перебор треков из трек банка
    for (i = 0; i < trackHandler.trackbank.getSizeOfBank(); i++)
    {
@@ -87,15 +99,6 @@ function flush() {
       // включаем трек с номером i если он выбран в программе(cursorIndex)
 
       // new ver start
-      var itemsInBank = trackHandler.trackbank.getSizeOfBank();
-      var maxInCurrentBank = 0;
-      if (itemsInBank >= itemsCount) {
-         maxInCurrentBank = itemsInBank;
-      } else {
-         // Если не сработает то отнять единицуmaxInCurrentBank = itemsCount % itemsInBank - 1;
-         maxInCurrentBank = itemsCount % itemsInBank;
-      }
-
       if (i < maxInCurrentBank) {
          color = i === cursorIndex ? 16 : 15;
       } else {
